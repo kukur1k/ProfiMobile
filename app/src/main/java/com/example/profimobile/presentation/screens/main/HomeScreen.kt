@@ -1,5 +1,7 @@
 package com.example.profimobile.presentation.screens.main
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,7 +26,9 @@ import androidx.compose.ui.keepScreenOn
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.time.format.DateTimeFormatter
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun HomeScreen(viewModel: MainViewModel){
     val uiState by viewModel.uiState.collectAsState()
@@ -100,6 +104,19 @@ fun HomeScreen(viewModel: MainViewModel){
                 }, modifier = Modifier.height(10.dp))
             }
 
+            Spacer(modifier = Modifier.height(10.dp))
+
+
+            currentUser.confirmations.forEach { confirm ->
+                Row() {
+                    Text(
+                        text = "  ${confirm.name}:  ${confirm.technology}   [${confirm.dateConfirm.toShortDate()}]",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
         }
 
 
@@ -109,8 +126,11 @@ fun HomeScreen(viewModel: MainViewModel){
     }
 
 
-}
 
+
+
+
+}
 
 
 
