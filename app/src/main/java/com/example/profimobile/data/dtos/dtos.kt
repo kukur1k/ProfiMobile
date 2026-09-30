@@ -21,9 +21,9 @@ data class AuthResponse(
 data class RefreshRequest(val refreshToken: String)
 
 data class Notification(
+    val id: Int,
     val body: String,
     val createdAt: String,
-    val id: Int,
     val isRead: Boolean,
     val relatedId: Any,
     val title: String,

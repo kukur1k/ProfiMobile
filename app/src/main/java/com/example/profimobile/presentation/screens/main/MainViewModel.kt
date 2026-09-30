@@ -29,6 +29,7 @@ class MainViewModel: ViewModel() {
         loadRating()
         loadSkills()
         loadUser()
+        loadNotif()
     }
 
     fun loadRating(){
@@ -50,6 +51,19 @@ class MainViewModel: ViewModel() {
                 val res = NetworkModule.api.getSkills()
                 if (res.success == true){
                     _uiState.update { it.copy(skills = res.data!!) }
+                }
+            } catch (ex: Exception){
+
+            }
+        }
+    }
+
+    fun loadNotif(){
+        viewModelScope.launch {
+            try {
+                val res = NetworkModule.api.getNotifications()
+                if (res.success == true){
+                    _uiState.update { it.copy(notifications = res.data) }
                 }
             } catch (ex: Exception){
 

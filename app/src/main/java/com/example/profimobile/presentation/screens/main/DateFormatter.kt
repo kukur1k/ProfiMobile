@@ -2,6 +2,7 @@ package com.example.profimobile.presentation.screens.main
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -10,8 +11,16 @@ import java.time.format.DateTimeFormatter
 private val shortDateFormatter = DateTimeFormatter.ofPattern("dd.MM")
 
 @RequiresApi(Build.VERSION_CODES.O)
-fun String.toShortDate(): String = try {
+fun String.toShortDateSkills(): String = try {
     OffsetDateTime.parse(this).format(shortDateFormatter)
+} catch (e: Exception) {
+    this
+}
+
+
+@RequiresApi(Build.VERSION_CODES.O)
+fun String.toShortDateNotif(): String = try {
+    LocalDateTime.parse(this).format(shortDateFormatter)
 } catch (e: Exception) {
     this
 }

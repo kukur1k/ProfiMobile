@@ -20,9 +20,6 @@ interface Api {
     @POST("auth/refresh")
     suspend fun refresh(@Body request: RefreshRequest): ApiResponse<AuthResponse>
 
-    @GET("notifications")
-    suspend fun getNotifications(): ApiResponse<List<Notification>>
-
     @GET("users/me/rating")
     suspend fun getMyRating(): ApiResponse<RatingUser>
 
@@ -31,4 +28,7 @@ interface Api {
 
     @GET("users/me/skills")
     suspend fun getSkills(): ApiResponse<List<Skill>>
+
+    @GET("users/me/notifications")
+    suspend fun getNotifications(): ApiResponse<List<Notification>>
 }

@@ -110,8 +110,20 @@ fun HomeScreen(viewModel: MainViewModel){
             currentUser.confirmations.forEach { confirm ->
                 Row() {
                     Text(
-                        text = "  ${confirm.name}:  ${confirm.technology}   [${confirm.dateConfirm.toShortDate()}]",
+                        text = "  ${confirm.name}:  ${confirm.technology}   [${confirm.dateConfirm.toShortDateSkills()}]",
                         fontSize = 20.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(15.dp))
+
+            uiState.notifications?.forEach { notification ->
+                Row(modifier = Modifier.padding(5.dp)) {
+                    Text(
+                        text = "  ${notification.title}  ${notification.body}   [${notification.createdAt.toShortDateNotif()}]",
+                        fontSize = 18.sp,
                         fontWeight = FontWeight.SemiBold
                     )
                 }
